@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: fastapi
+  namespace: webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-api
+  template:
+    metadata:
+      labels:
+        app: webapp-api
+    spec:
+      containers:
+      - name: webapp-api
+        image: asia.gcr.io/inc-prd-datalake/test_cj:0.0.3
+        ports:
+        - containerPort: 80
+
+
